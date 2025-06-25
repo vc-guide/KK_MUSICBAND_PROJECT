@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
-from .serializers import HomepageSerializer
+from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -13,5 +13,9 @@ def home(request):
 class BandList(APIView):
   def get(self,request):
     queryset = Homepage.objects.all()
-    serializer = HomepageSerializer(queryset, many=True)
-    return Response(serializer.data)
+    queryset2 = HomepageDescription.objects.all()
+    background = HomepageSerializer(queryset, many=True).data
+    description = HomepageDescriptionSerializer(queryset2, many=True).data
+    return Response({
+      "background":background, "description" : description
+    })
