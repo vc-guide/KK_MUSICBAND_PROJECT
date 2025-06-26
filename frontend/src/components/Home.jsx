@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Preloader from './Preloader.jsx';
 import './Home.css';
+import Menu from './Menu.jsx';
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -28,12 +29,14 @@ const Home = () => {
     <div>
       {loading ? <Preloader/> :
     <div className="container" >
+      
       {items.map(item => (
         <div className="background"
         key={item.id}
         style={{ backgroundImage: `url(${baseUrl}${item.homeimg})` }} >
           
           <img className="top-logo" src="/kklogo1.png" alt="logo"/>
+          <Menu className="menu-icon"/>
           <div className="center-container">
             <img className="center-logo" src="/kklogomain.png" alt="center logo" />
             <h2 className="center-text"> MUSIC BAND </h2>
@@ -47,6 +50,7 @@ const Home = () => {
     <p className="descriptions" dangerouslySetInnerHTML={{__html:desc.Description}}></p>
     </div>
   ))}
+ 
     </div>
   );
 };

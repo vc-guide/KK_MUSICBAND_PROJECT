@@ -1,0 +1,98 @@
+.menuContainer {
+  
+  top:0;
+  right:0;
+  height : 100%;
+  width : 11rem;
+  
+  border-right-color: black;
+  border-style: solid;
+}
+
+.imagebox {
+  height:6.3rem;
+  position: relative;
+
+}
+.clearstyle{
+  top:1%;
+  right:2%;
+  position: absolute;
+}
+
+.imagebackground {
+  height:4rem;
+  width:4rem;
+  margin: 1.6rem;
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.2rem;
+  background-color:#000;
+  
+}
+.imagestyle {
+  height: 2rem;
+  width:3.1rem;
+}
+
+.contentbox {
+  margin-left: 1.6rem;
+  height:1.2rem;
+  font-size:0.75rem;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.contentbox:active{
+  color:#fab800;
+}
+
+.contentbox:hover {
+  color:#fab800;
+  transition:0.4s;
+}
+.socialmediabox {
+  display: flex;
+  margin-left: 1.5rem;
+  width: 5rem;
+}
+
+.icon-background{
+  flex:1;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+ 
+}
+.icon-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:20;
+ 
+}
+.circlestyle {
+  position: absolute;
+  font-size:1.2rem;
+  z-index:4;
+  color:#fab800;
+}
+.icon-style {
+   color:white;
+  font-size: 11px;
+}
+.bookbutton {
+  width:5rem;
+  padding:0.4rem;
+  margin:1.5rem;
+  flex:2;
+  background-color: #fab800;
+  color:white;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 2rem;
+  color:black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
