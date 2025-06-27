@@ -6,12 +6,13 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 
-const Menubar =() =>{
+const Menubar =({className,onClose}) =>{
 
   return (
+  <div className={className}>
     <div className="menuContainer">
       <div className="imagebox">
-        <MdClear className="clearstyle"/>
+        <MdClear className="clearstyle" onClick={onClose}/>
         <div className="imagebackground">
           <img className="imagestyle" src="kklogo.png"/>
         </div>
@@ -20,11 +21,12 @@ const Menubar =() =>{
       <div className="contentbox">Cinema Melody</div>
       <div className="contentbox">Cinema Melody 2</div>
       <div className="contentbox">Cinema Melody 3</div>
+      <div className="contentbox">babu</div>
+      <div className="contentbox">Babu</div>
       <div className="contentbox"></div>
       <div className="contentbox"></div>
       <div className="contentbox"></div>
-      <div className="contentbox"></div>
-      <div className="contentbox"></div>
+      <div className="contentbox">
       <div className="socialmediabox">
         <div className="icon-background">
           <FaCircle className="circlestyle"/>
@@ -51,10 +53,10 @@ const Menubar =() =>{
           </div>
         </div>
       </div>
+      </div>
         
       <div className="bookbutton">Book Event</div>
-      
-      
+    </div>
     </div>
   )
 };

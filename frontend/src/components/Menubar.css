@@ -1,12 +1,10 @@
 .menuContainer {
-  
   top:0;
   right:0;
-  height : 100%;
-  width : 11rem;
+  height : 100vh;
+  width : 12rem;
+  overflow-y:auto;
   
-  border-right-color: black;
-  border-style: solid;
 }
 
 .imagebox {
@@ -53,8 +51,9 @@
   transition:0.4s;
 }
 .socialmediabox {
+  position:relative;
   display: flex;
-  margin-left: 1.5rem;
+ /* margin-left: 1.5rem;*/
   width: 5rem;
 }
 
@@ -79,13 +78,15 @@
   color:#fab800;
 }
 .icon-style {
+  position: absolute;
    color:white;
   font-size: 11px;
 }
 .bookbutton {
+  position:relative;
   width:5rem;
   padding:0.4rem;
-  margin:1.5rem;
+  margin:0.5rem 1.5rem 1.5rem;
   flex:2;
   background-color: #fab800;
   color:white;
@@ -96,3 +97,4 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
+

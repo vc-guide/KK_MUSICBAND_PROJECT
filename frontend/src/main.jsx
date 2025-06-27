@@ -8,7 +8,7 @@ import Menubar from './components/Menubar.jsx'
 createRoot(document.getElementById('root')).render(
   <Router>
     <StrictMode>
-      <Menubar/>
+      <App/>
     </StrictMode>
   </Router>,
 )
