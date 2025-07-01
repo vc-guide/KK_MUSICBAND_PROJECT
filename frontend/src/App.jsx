@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-
+import {Routes, Route} from "react-router-dom"
+import Menubar from './components/Menubar.jsx'
 import './App.css'
-import Home from './components/Home'
+import Home from './components/Home';
+import Upcoming_Events from './components/Upcoming_Events.jsx'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <Home/>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/Events" element={<Upcoming_Events/>}/>
+    </Routes>
   )
 }
 

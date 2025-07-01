@@ -21,16 +21,21 @@ const Home = () => {
     setShowMenu(false);
   };
 
+ useEffect(()=>{
+  const hasVisited = sessionStorage.getItem('hasVisited');
  
-
-  useEffect(() => {
     axios.get(baseUrl)
       .then(res => {
         setItems(res.data.background);
-        setDescriptions(res.data.description)
-         const timer = setTimeout(()=>setLoading(false),2000);
-         return () => clearTimeout(timer)
-        })
+        setDescriptions(res.data.description);
+
+        if (!hasVisited){
+        setTimeout(()=>{setLoading(false);
+        sessionStorage.setItem('hasVisited','true');},
+        2000);
+        } else {
+          setLoading(false);
+        }})
       .catch(err => {console.error(err), setLoading(true)});
     }, []);
 
@@ -54,7 +59,7 @@ const Home = () => {
     document.body.style.position ='fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
-    document.body.style.overflowY = "hidden";
+    
 
     
 
@@ -71,8 +76,8 @@ const Home = () => {
   
   return (
     <div>
-      {loading ? <Preloader/> :
-    <div className="container" >
+      {loading ? <Preloader/> :(
+    <div className={`container ${showMenu ? 'dimmed':''}`} >
       
       {items.map(item => (
         <div className="background"
@@ -88,12 +93,13 @@ const Home = () => {
         </div>
       ))}
     </div>
-  }
+  ) }
   {descriptions.map(desc=>(
     <div key={desc.id}>
     <p className="descriptions" dangerouslySetInnerHTML={{__html:desc.Description}}></p>
     </div>
   ))}
+    {showMenu && <div className="overlay" onClick={CloseShowMenu}></div>}
     <Menubar className={`menubarstyle ${showMenu ? 'show':''}`} onClose={CloseShowMenu}/>
 
     </div>

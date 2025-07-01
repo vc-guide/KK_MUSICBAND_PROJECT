@@ -5,6 +5,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Menubar =({className,onClose}) =>{
 
@@ -18,7 +19,7 @@ const Menubar =({className,onClose}) =>{
         </div>
       </div>
       <div className="contentbox" style={{color:"#fab800"}}>Home</div>
-      <div className="contentbox">Cinema Melody</div>
+      <div className="contentbox"><Link to="/Events">Upcoming Events</Link></div>
       <div className="contentbox">Cinema Melody 2</div>
       <div className="contentbox">Cinema Melody 3</div>
       <div className="contentbox">babu</div>
@@ -55,7 +56,7 @@ const Menubar =({className,onClose}) =>{
       </div>
       </div>
         
-      <div className="bookbutton">Book Event</div>
+      <div className="bookbutton">Book Events</div>
     </div>
     </div>
   )

@@ -5,3 +5,5 @@ from .models import *
 
 admin.site.register(Homepage)
 admin.site.register(HomepageDescription)
+admin.site.register(Events)
+admin.site.register(EventGallery)

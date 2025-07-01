@@ -2,26 +2,27 @@
   top:0;
   right:0;
   height : 100vh;
-  width : 12rem;
-  overflow-y:auto;
+  width : 20rem;
+ 
   
 }
 
 .imagebox {
-  height:6.3rem;
+  height:9.2rem;
   position: relative;
 
 }
 .clearstyle{
+  font-size:1.2rem;
   top:1%;
   right:2%;
   position: absolute;
 }
 
 .imagebackground {
-  height:4rem;
-  width:4rem;
-  margin: 1.6rem;
+  height:5.5rem;
+  width:5.5rem;
+  margin: 2rem;
   position: absolute;
   display:flex;
   justify-content: center;
@@ -31,14 +32,14 @@
   
 }
 .imagestyle {
-  height: 2rem;
-  width:3.1rem;
+  height: 3.6rem;
+  width:5.3rem;
 }
 
 .contentbox {
-  margin-left: 1.6rem;
-  height:1.2rem;
-  font-size:0.75rem;
+  margin-left: 2rem;
+  height:2rem;
+  font-size:1.3rem;
   font-family: 'Montserrat', sans-serif;
   
 }
@@ -54,7 +55,7 @@
   position:relative;
   display: flex;
  /* margin-left: 1.5rem;*/
-  width: 5rem;
+  width: 9rem;
 }
 
 .icon-background{
@@ -73,24 +74,24 @@
 }
 .circlestyle {
   position: absolute;
-  font-size:1.2rem;
+  font-size:2rem;
   z-index:4;
   color:#fab800;
 }
 .icon-style {
   position: absolute;
    color:white;
-  font-size: 11px;
+  font-size: 1.2rem;
 }
 .bookbutton {
   position:relative;
-  width:5rem;
-  padding:0.4rem;
-  margin:0.5rem 1.5rem 1.5rem;
+  width:7rem;
+  padding:0.8rem;
+  margin:0.5rem 2.2rem 1.5rem;
   flex:2;
   background-color: #fab800;
   color:white;
-  font-size: 10px;
+  font-size: 1rem;
   text-align: center;
   border-radius: 2rem;
   color:black;

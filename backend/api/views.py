@@ -19,3 +19,11 @@ class BandList(APIView):
     return Response({
       "background":background, "description" : description
     })
+    
+class EventsList(APIView):
+  def get(self,request):
+    eventset = Events.objects.filter(status = 0)
+    eventlists = EventsSerializer(eventset, many= True).data
+    return Response({
+      "eventslists": eventlists
+    })
