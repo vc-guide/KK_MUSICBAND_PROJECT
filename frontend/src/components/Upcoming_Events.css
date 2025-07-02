@@ -1,0 +1,65 @@
+.maincontainer {
+  position:relative;
+  width: 100vw;
+  height:90vh;
+}
+.event-container {
+  top:0%;
+  left:0%;
+  width: 100vw;
+  height: 90vh;
+  overflow:hidden;
+ position:absolute
+}
+
+.event-background {
+  top:0%;
+  left:0%;
+  width: 100%;
+  height:100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(8px);
+  z-index:1;
+  position: absolute;
+}
+
+.event-front{
+  position:relative;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  position:relative;
+  height:100%;
+}
+
+.event-image {
+  z-index: 10;
+  height:80vh;
+  width:35vw;
+  object-fit:cover;
+}
+
+.forward-button {
+  position:relative;
+  top:50%;
+  left:170%;
+  z-index:100;
+ border-color:aqua;
+ border : solid;
+ background-color: transparent;
+}
+.backward-button {
+  position:relative;
+  top:50%;
+  right:170%;
+  z-index:100;
+  border-color:aqua;
+  border: solid;
+  background-color: transparent;
+}
+
+.event-description {
+  width:100vw;
+}
