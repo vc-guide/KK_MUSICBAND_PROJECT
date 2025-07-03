@@ -56,7 +56,9 @@ const Menubar =({className,onClose}) =>{
       </div>
       </div>
         
+      <Link to ="/bookevent">
       <div className="bookbutton">Book Events</div>
+      </Link>
     </div>
     </div>
   )

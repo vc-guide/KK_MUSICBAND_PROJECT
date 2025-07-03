@@ -15,7 +15,7 @@
 .event-background {
   top:0%;
   left:0%;
-  width: 100%;
+  width: 100vw;
   height:100%;
   background-size: cover;
   background-position: center;
@@ -44,7 +44,7 @@
 .forward-button {
   position:relative;
   top:50%;
-  left:170%;
+  
   z-index:100;
  border-color:aqua;
  border : solid;
@@ -53,13 +53,37 @@
 .backward-button {
   position:relative;
   top:50%;
-  right:170%;
   z-index:100;
   border-color:aqua;
   border: solid;
   background-color: transparent;
 }
 
-.event-description {
+.event-description-container {
+  display:flex;
   width:100vw;
+   align-items: center;
+  justify-content:center;
+}
+
+.event-description{
+  padding:1rem;
+  padding: 2vw;
+  font-size:1.7vw;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 20px;
+  padding: 20px;
+}
+
+.grid-element {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

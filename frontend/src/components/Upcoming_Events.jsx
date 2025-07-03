@@ -2,7 +2,7 @@ import React from 'react'
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Upcoming_Events.css'
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowForward, IoIosImage } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 
 const Upcoming_Events = () => {
@@ -42,22 +42,37 @@ const Upcoming_Events = () => {
           <div>    <button className="forward-button" onClick={handleForward} disabled ={currentIndex === eventData.length - 1}><IoIosArrowForward /> </button> </div>
         </div>
       </div>
-        
-     
-     
       </div>
-      <div className="event-description">
-     <p >{eventData[currentIndex].description}</p>
+      <div className="event-description-container">
+     <p className="event-description">{eventData[currentIndex].description}</p>
       </div>
+    <div className="grid-container">
+  {eventData[currentIndex].media.map((element) => (
+    <React.Fragment key={element.id}>
+      {element.image && (
+        <div className="grid-element">
+          <img
+            src={`${baseUrl}${element.image}`}
+            alt="loading"
+            style={{ height: '40vh', width: '100%' }}
+          />
+        </div>
+      )}
+      {element.video && (
+        <div className="grid-element">
+          <video controls style={{ height: '40vh', width: '100%' }}>
+            <source src={`${baseUrl}${element.video}`} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+    </React.Fragment>
+  ))}
+</div>
        
       </>
     )}
-      
 
-       
-    
-    
-      
     </div> 
   
   );
