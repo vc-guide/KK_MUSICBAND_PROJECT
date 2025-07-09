@@ -23,3 +23,20 @@ class EventsSerializer(serializers.ModelSerializer):
     model = Events
     fields = '__all__'
     
+class EventScheduleSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = EventSchedule
+    fields = '__all__'
+
+class EventBookingSerializer(serializers.ModelSerializer):
+  schedule = EventScheduleSerializer(many = True)
+  class Meta:
+    model = EventBooking
+    fields = '__all__'
+    
+  def create(self, validated_data):
+    schedule_data = validated_data.pop('schedule')
+    booking = EventBooking.objects.create(**validated_data)
+    for schedule_item in schedule_data:
+      EventSchedule.objects.create(booking = booking , **schedule_item)
+    return booking

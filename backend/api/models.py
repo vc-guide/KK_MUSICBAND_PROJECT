@@ -35,5 +35,25 @@ class EventGallery(models.Model):
   def __str__(self):
     return f"Media for {self.event_name.event}"
   
+
+class EventBooking(models.Model):
+  name = models.CharField(max_length = 150)
+  phone = models.CharField(max_length=15)
+  email = models.EmailField()
+  address = models.TextField()
+  event_name = models.CharField(max_length=250)
+  committee_name = models.CharField(max_length=250)  
+  venue = models.CharField(max_length=150)
   
+  def __str__(self):
+    return f"{self.event_name} booked by {self.name}"
+  
+class EventSchedule(models.Model):
+  booking = models.ForeignKey(EventBooking, related_name="schedule", on_delete=models.CASCADE)
+  date = models.DateField()
+  start_time = models.TimeField()
+  end_time = models.TimeField()
+  
+  def __str__(self):
+    return f"{self.date} : {self.start_time} to {self.end_time}"
   
