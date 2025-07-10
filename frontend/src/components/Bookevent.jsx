@@ -7,6 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {useState,useEffect} from "react";
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
+import axios from 'axios';
 
 
 
@@ -16,7 +17,7 @@ const Bookevent =()=>{
   const [endTime,setEndTime]=useState(null)
   const [eventSchedule, setEventSchedule] = useState([])
   const handleSaveDate = () =>{
-    if ( eventSchedule.length < 3){
+    if ( selectedDate && startTime && endTime && eventSchedule.length < 3){
     setEventSchedule([...eventSchedule,{date :selectedDate, start_time : startTime, end_time : endTime }]);
     setSelectedDate(null);
     setStartTime(null);
@@ -33,6 +34,31 @@ const Bookevent =()=>{
     committee_name : '', 
     venue : '',
   })
+  const addValue = (e) =>{
+    const {name, value} = e.target;
+    setBookingData(prev =>({...prev, [name]:value}));
+  }
+
+  const handleSubmit = async(e) =>{
+    e.preventDefault();
+    
+    const formattedSchedule = eventSchedule.map(item=>({
+      date : dayjs(item.date).format('YYYY-MM-DD'),
+      start_time : dayjs(item.start_time).format('HH:mm:ss'),
+      end_time: dayjs(item.end_time).format('HH:mm:ss'),
+    }));
+    const finalData ={
+      ...BookingData,
+      schedule : formattedSchedule
+    };
+
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/bookings/',finalData);
+      console.log('Booking successful:',response.data);
+    } catch (error) {
+      console.error('Error creating booking:', error.response?.data || error.message);
+    }
+  };
 
     return( 
     <div style={{display:"flex",justifyContent:"center",alignItems:"center", width:"100vw"}}>
@@ -42,28 +68,28 @@ const Bookevent =()=>{
       Add Booking details here
     </Typography>
       <CardContent>
-        <form>
+        <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid size={{xs:12, sm:6}} >
-            <TextField  label="Name" name='name' placeholder='Enter Name' variant="outlined" className='text-box' fullWidth required/>
+            <TextField  label="Name" name='name' placeholder='Enter Name' variant="outlined" className='text-box' value={BookingData.name} onChange ={addValue} fullWidth required/>
           </Grid>
           <Grid  size={{xs:12,sm:6}}  >
-            <TextField type="number" name='phone' label="Phone" placeholder='Enter phone number' variant="outlined"  className='text-box' fullWidth required/>
+            <TextField type="number" name='phone' label="Phone" placeholder='Enter phone number' variant="outlined"  className='text-box' value={BookingData.phone} onChange ={addValue} fullWidth required/>
           </Grid>
           <Grid  size={{xs:12,sm:6}}  >
-            <TextField type="email" name='email' label="Email" placeholder='Enter phone number' variant="outlined"  className='text-box' fullWidth required/>
+            <TextField type="email" name='email' label="Email" placeholder='Enter phone number' variant="outlined"  className='text-box' value={BookingData.email} onChange ={addValue} fullWidth required/>
           </Grid>
           <Grid  size={{xs:12,sm:6}}  >
-            <TextField name='address' label="Address" placeholder='Enter Address' variant="outlined" className='text-box' fullWidth required/>
+            <TextField name='address' label="Address" placeholder='Enter Address' variant="outlined" className='text-box' value={BookingData.address} onChange ={addValue} fullWidth required/>
           </Grid>
           <Grid  size={{xs:12,sm:6}}  >
-            <TextField name='event_name' label="Event Name" placeholder='Enter Event name' variant="outlined" className='text-box' fullWidth required/>
+            <TextField name='event_name' label="Event Name" placeholder='Enter Event name' variant="outlined" className='text-box' value={BookingData.event_name} onChange ={addValue} fullWidth required/>
           </Grid>
           <Grid  size={{xs:12,sm:6}}  >
-            <TextField name='committee_name' label="Committee Name" placeholder='Enter committee name' variant="outlined" className='text-box' fullWidth required/>
+            <TextField name='committee_name' label="Committee Name" placeholder='Enter committee name' variant="outlined" className='text-box' value={BookingData.committee_name} onChange ={addValue} fullWidth required/>
           </Grid>
           <Grid size={{xs:12}}>
-            <TextField name='venue' label="Venue" placeholder="Enter Venue" variant="outlined" className="text-box" fullWidth required/>
+            <TextField name='venue' label="Venue" placeholder="Enter Venue" variant="outlined" className="text-box" value={BookingData.venue} onChange ={addValue} fullWidth required/>
           </Grid>
           <Grid size={{xs:12}} >
              <Typography>Select Date </Typography>
@@ -98,11 +124,9 @@ const Bookevent =()=>{
                   </div>
                 </LocalizationProvider>
                 <Button size="small" className='date-button' fullWidth variant="contained" color="primary" onClick={handleSaveDate}>Save Date</Button>
-                </Grid>
-                
-          <Grid size={{xs:12}}>
-            {eventSchedule.map((item, index)=>(<div key={index}>
-              <h1>{dayjs(item.date).format('DD-MM_YYYY')}--{dayjs(item.start_time).format('hh:mm A')} to {dayjs(item.end_time).format('hh:mm A')}</h1>
+              
+            {eventSchedule.map((item, index)=>(<div key={index} className="date-display">
+              <h5>{dayjs(item.date).format('DD-MM-YYYY')}  &nbsp;&nbsp;{dayjs(item.start_time).format('hh:mm A')} to {dayjs(item.end_time).format('hh:mm A')}</h5>
               </div>
             ))}
            
