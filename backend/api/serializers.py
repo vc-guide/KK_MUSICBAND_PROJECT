@@ -26,13 +26,13 @@ class EventsSerializer(serializers.ModelSerializer):
 class EventScheduleSerializer(serializers.ModelSerializer):
   class Meta:
     model = EventSchedule
-    fields = '__all__'
+    fields = ['date','start_time','end_time']
 
 class EventBookingSerializer(serializers.ModelSerializer):
   schedule = EventScheduleSerializer(many = True)
   class Meta:
     model = EventBooking
-    fields = '__all__'
+    fields = ['name', 'phone','email','address','event_name','committee_name','venue','schedule']
     
   def create(self, validated_data):
     schedule_data = validated_data.pop('schedule')
