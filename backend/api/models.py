@@ -57,3 +57,38 @@ class EventSchedule(models.Model):
   def __str__(self):
     return f"{self.date} : {self.start_time} to {self.end_time}"
   
+class CinemaMelody(models.Model):
+  slug = models.CharField(max_length=100)
+  slider_img1 = models.ImageField(upload_to='cinemaMelody/slider/', blank=True)
+  slider_img2 = models.ImageField(upload_to='cinemaMelody/slider/', blank=True)
+  slider_img3 = models.ImageField(upload_to='cinemaMelody/slider/', blank=True)
+  slider_img4 = models.ImageField(upload_to='cinemaMelody/slider/', blank=True)
+  slider_img5 = models.ImageField(upload_to='cinemaMelody/slider/', blank=True)
+  slider_title1 = models.CharField(max_length=250)
+  slider_title2 = models.CharField(max_length=300)
+  vedio_description1 = models.TextField()
+  vedio_description2 = models.TextField()
+  vedio_description3 = models.TextField()
+  vedio_description4 = models.TextField()
+  vedio_description5 = models.TextField()
+  semi_description = models.TextField()
+  main_video = models.FileField(upload_to='cinemaMelody/mainvideo/', blank=True)
+  
+  def __str__(self):
+    return f"{self.slug}"
+  
+class CinemaMelodyImages(models.Model):
+  cinema_melody = models.ForeignKey(CinemaMelody, related_name='melody_images', on_delete = models.CASCADE)
+  cinema_malody_image = models.ImageField(upload_to='cinemaMelody/images/',blank=True)
+  
+  def __str__(self):
+    return f"Images for {self.cinema_melody}"
+  
+class CinemaMelodyVideos(models.Model):
+  cinema_melody = models.ForeignKey(CinemaMelody, related_name='melody_videos', on_delete = models.CASCADE)
+  cinema_malody_video = models.FileField(upload_to='cinemaMelody/videos/',blank=True)
+  
+  def __str__(self):
+    return f"Videos for {self.cinema_melody}"
+  
+    

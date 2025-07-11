@@ -83,15 +83,14 @@ const Home = () => {
         <div className="background"
         key={item.id}
         style={{ backgroundImage: `url(${baseUrl}${item.homeimg})` }} >
-          
-          <img className="top-logo" src="/kklogo1.png" alt="logo"/>
-          <Menu className="menu-icon" onClick={OpenShowMenu}/>
-          <div className="center-container">
-            <img className="center-logo" src="/kklogomain.png" alt="center logo" />
-            <h2 className="center-text"> MUSIC BAND </h2>
-          </div>
         </div>
       ))}
+      <img className="top-logo" src="/kklogo1.png" alt="logo"/>
+      <Menu className="menu-icon" onClick={OpenShowMenu}/>
+       <div className="center-container">
+            <img className="center-logo" src="/kklogomain.png" alt="center logo" />
+            <h2 className="center-text"> MUSIC BAND </h2>
+        </div>
     </div>
   ) }
   {descriptions.map(desc=>(

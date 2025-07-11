@@ -61,9 +61,9 @@ const Bookevent =()=>{
   };
 
     return( 
-    <div style={{display:"flex",justifyContent:"center",alignItems:"center", width:"100vw"}}>
+    <div style={{display:"flex",justifyContent:"center",alignItems:"center", width:"100vw",backgroundImage:'linear-gradient(#fab800,white)'}}>
     
-    <Card style={{maxWidth:450}}>
+    <Card style={{maxWidth:450, backgroundImage: 'linear-gradient(#f9eed0,white)', borderRadius:'0.6rem', marginTop:'1rem'}}>
       <Typography gutterBottom variant="h5" align="center" sx={{fontWeight:'bold',fontFamily:'Montserrat, sans-serif',margin:"1rem 0 0 0"}}>
       Add Booking details here
     </Typography>
@@ -132,7 +132,7 @@ const Bookevent =()=>{
            
           </Grid>
           <Grid size={{xs:12}}>
-            <Button type="submit" className='submit-button' size="medium" variant="contained" color="warning" fullWidth>Submit</Button>
+            <Button type="submit" className='submit-button' size="medium" variant="contained" sx={{ backgroundColor:'#fab800',color:'#fffef0' }} fullWidth>Submit</Button>
           </Grid>
         </Grid>
         </form>

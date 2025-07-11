@@ -30,10 +30,23 @@ class EventsList(APIView):
       "eventslists": eventlists
     })
     
-@api_view(['POST'])
-def create_booking(request):
-  serializer = EventBookingSerializer(data = request.data)
-  if serializer.is_valid():
-    serializer.save()
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
-  return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class EventBookingCreateView(APIView):
+  def post(self,request):
+    serializer = EventBookingSerializer(data = request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  
+  def get(self, request):
+    bookings = EventBooking.objects.all()
+    serializer = EventBookingSerializer(bookings,many=True)
+    return Response(serializer.data)
+  
+class CinemaMelodyList(APIView):
+  def get(self,request):
+    cinemamelody = CinemaMelody.objects.all()
+    melodylist = CinemaMelodySerializer(cinemamelody,many=True).data
+    return Response({
+      "melodylist": melodylist
+    })

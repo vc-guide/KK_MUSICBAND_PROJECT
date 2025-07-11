@@ -5,6 +5,7 @@ import Menubar from './components/Menubar.jsx'
 import Home from './components/Home';
 import Upcoming_Events from './components/Upcoming_Events.jsx'
 import Bookevent from './components/Bookevent.jsx'
+import Medley1 from './components/Medley1.jsx';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/Events" element={<Upcoming_Events/>}/>
       <Route path="/bookevent" element={<Bookevent/>} />
+      <Route path="/Medley1" element={<Medley1/>}/>
     </Routes>
   )
 }

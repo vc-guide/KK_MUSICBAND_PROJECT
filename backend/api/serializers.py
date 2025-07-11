@@ -40,3 +40,20 @@ class EventBookingSerializer(serializers.ModelSerializer):
     for schedule_item in schedule_data:
       EventSchedule.objects.create(booking = booking , **schedule_item)
     return booking
+  
+class CinemaMelodyImagesSerilizer(serializers.ModelSerializer):
+  class Meta:
+    model = CinemaMelodyImages
+    fields = ['cinema_malody_image']
+    
+class CinemaMelodyVideosSerilizer(serializers.ModelSerializer):
+  class Meta:
+    model = CinemaMelodyVideos
+    fields = ['cinema_malody_video']
+    
+class CinemaMelodySerializer(serializers.ModelSerializer):
+  melody_images = CinemaMelodyImagesSerilizer(many = True, read_only= True)
+  melody_videos = CinemaMelodyVideosSerilizer(many = True, read_only= True)
+  class Meta:
+    model = CinemaMelody
+    fields = '__all__'
