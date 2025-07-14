@@ -57,6 +57,9 @@
     top: 83%;
     position: absolute;
   }
+  .masonry-grid{
+    margin-left: 8vw;
+  }
 }
 
 .video_description{
@@ -117,7 +120,115 @@
   font-weight: bold;
   font-size:0.9rem;
 }
+.gallery-text{
+  margin:1vw 0 0 5vw;
+  font-size:3vw;
+  letter-spacing: -1.5px;
+  transform: scaleX(1);
+  transform-origin: left center;
+  font-family:'Montserrat', sans-serif ;
+}
+.image-gallery-container{
+  padding: 2vw 4vw 4vw 4vw;
+}
+.masonry-grid {
+  display: block;
+}
 
+.grid-sizer,
+.grid-item {
+  width: 23.66%;
+}
+
+.grid-item {
+  padding-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.grid-item img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover img {
+  transform: scale(1.05);
+}
+
+/* 
+.my-masonry-grid {
+  display: -webkit-box;      
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -10px; 
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 10px; 
+  background-clip: padding-box;
+}
+
+.pics {
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.pics img {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.pics:hover img {
+  transform: scale(1.05);
+}
+*/
+
+
+/*
+.pop_up_container{
+  display:block;
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color:rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  overflow-y:auto ;
+  padding: 60px 0;
+}
+.close_button {
+  padding:20px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.pop_up_image{
+  width:40vw;
+  margin:auto;
+}
+.pop_up_image img{
+  width:100%;
+  border-radius: 20px;
+}
+.pop_tabs{
+  width: 40vw;
+  height:40px;
+
+}
+.tabs img{
+  width:100%;
+  border-radius: 10px;
+}
+  */
+/*
 .image-gallery-container {
   max-width: 1200px;
   margin: auto;
@@ -150,3 +261,5 @@
 .pics:hover img {
   transform: scale(1.08);
 }
+
+*/

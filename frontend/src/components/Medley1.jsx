@@ -2,26 +2,61 @@ import react from 'react'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import './Medley1.css'
+import Imagepopup from './Imagepopup.jsx'
 import {Card, CardContent, CardMedia, Grid, Typography} from '@mui/material'
+import {LayoutGroup, motion, AnimatePresence} from 'framer-motion';
+import Masonry from 'masonry-layout'
+import {useRef} from 'react';
 
 const Medley1 =()=>{
   const [Medleydata, setMedleydata] = useState([])
+  const  [medleyimages, setMedleyimages] = useState([])
   const baseUrl ='http://127.0.0.1:8000/'
   const Medleyurl = "http://127.0.0.1:8000/cinemamelody/"
+  
 
   useEffect(()=>{
     axios.get(Medleyurl).then(res=>{
-      setMedleydata(res.data.melodylist);
-     
+      const list = res.data.melodylist;
+      setMedleydata(list);
+      if (list.length > 0) {
+        setMedleyimages(list[0].melody_images);}
     }).catch(err=>{
       console.log(err)
     })
   },[])
+
   
+ 
+const galleryRefs = useRef([]);
+
+useEffect(() => {
+  galleryRefs.current.forEach((ref) => {
+    if (ref) {
+      const masonry = new Masonry(ref, {
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        gutter: 10,
+        percentPosition: true
+      });
+    }
+  });
+
+  return () => {
+    galleryRefs.current.forEach((ref) => {
+      if (ref && ref.masonry) {
+        ref.masonry.destroy?.();
+      }
+    });
+  };
+}, [medleyimages, Medleydata]);
+
+
+
   return(
     <div className="medley-container">
-      {Medleydata.map(item=>(
-        <div>
+      {Medleydata.map((item,i)=>(
+        <div key={i}>
           <div className="image-container">
             <img className="image"src={`${baseUrl}${item.slider_img1}`}/>
             <div className="slider-title-container">
@@ -44,7 +79,7 @@ const Medley1 =()=>{
             </video>
           </div>
           <div>
-            <h1 class="video-heading">The timeless melodies of Vidyasagar</h1>
+            <h1 className="video-heading">The timeless melodies of Vidyasagar</h1>
           </div>
           <div style={{marginTop:"2vw",padding:"2vw"}}>
             <Grid container spacing={2} >
@@ -70,16 +105,20 @@ const Medley1 =()=>{
             </Grid>
           </div>
           <div>
-            <h2>Concert Gallery</h2>
+            <h2 className="gallery-text">Concert Gallery</h2>
           </div>
           <div className="image-gallery-container">
-              <div className="image-gallery">
-                {item.melody_images.map((item, index)=>(
-                  <div className="pics" key={index}>
-                    <img src={`${baseUrl}${item.cinema_malody_image}`} alt="loading..."/>
-                  </div>
+            <LayoutGroup>
+             <div className="image-gallery masonry-grid" ref={(el)=> galleryRefs.current[i]=el}>
+                <div className="grid-sizer"></div>
+                {item.melody_images.map((imgItem, index) => (
+                  <motion.div className="grid-item" key={index} >
+                    <motion.img src={`${baseUrl}${imgItem.cinema_malody_image}`} alt="loading..." />
+                  </motion.div>
                 ))}
               </div>
+
+            </LayoutGroup>
             
           </div>
         </div>
