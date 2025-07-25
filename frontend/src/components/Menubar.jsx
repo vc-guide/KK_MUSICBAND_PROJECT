@@ -22,7 +22,7 @@ const Menubar =({className,onClose}) =>{
       <div className="contentbox"><Link to="/Events">Upcoming Events</Link></div>
       <div className="contentbox"><Link to="/Medley1">Medley1: Vidya Sagar</Link></div>
       <div className="contentbox">Cinema Melody 3</div>
-      <div className="contentbox">babu</div>
+      <div className="contentbox"><Link to="/login">Login</Link></div>
       <div className="contentbox">Babu</div>
       <div className="contentbox"></div>
       <div className="contentbox"></div>

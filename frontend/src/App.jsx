@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Upcoming_Events from './components/Upcoming_Events.jsx'
 import Bookevent from './components/Bookevent.jsx'
 import Medley1 from './components/Medley1.jsx';
+import UserLoginContainer from './components/UserLoginContainer.jsx';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/Events" element={<Upcoming_Events/>}/>
       <Route path="/bookevent" element={<Bookevent/>} />
       <Route path="/Medley1" element={<Medley1/>}/>
+      <Route path="/login" element={<UserLoginContainer/>}/>
     </Routes>
   )
 }
